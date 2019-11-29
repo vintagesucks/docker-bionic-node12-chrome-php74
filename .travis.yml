@@ -1,0 +1,5 @@
+services:
+  - docker
+
+script:
+  - docker build -t docker-bionic-node12-chrome-php74 -f Dockerfile .
