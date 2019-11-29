@@ -23,8 +23,8 @@ RUN apt-get -y install \
   xdg-utils \
   libnss3 \
   libxss1 \
-  libappindicator1 \
-  libindicator7 \
+  libappindicator3-1 \
+  libindicator3-7 \
   git \
   zip \
   unzip \
