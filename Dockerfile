@@ -25,6 +25,7 @@ RUN apt-get -y install \
   libxss1 \
   libappindicator3-1 \
   libindicator3-7 \
+  libgbm1 \
   git \
   zip \
   unzip \
