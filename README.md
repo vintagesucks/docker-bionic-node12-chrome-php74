@@ -5,5 +5,5 @@
 Docker image
 * Ubuntu 18.04
 * Node.js v12 + NPM + Yarn
-* PHP 7.4.8 + Composer
+* PHP 7.4.9 + Composer
 * Google Chrome
