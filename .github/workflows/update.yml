@@ -1,0 +1,29 @@
+name: Update
+
+on:
+  schedule:    
+    - cron: "6 22 * * *"
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: wget -O version.json "https://www.php.net/releases/index.php?json&version=7.4"
+      - name: Get latest version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+            path: 'version.json'
+            prop_path: 'version'
+      - run: sed -i 's/PHP.*Composer/PHP ${{steps.version.outputs.prop}} + Composer/g' README.md
+      - run: rm version.json
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+            commit-message: 'PHP ${{steps.version.outputs.prop}}'
+            committer: 'Nikolas Evers <vintagesucks@users.noreply.github.com>'
+            branch: 'php-${{steps.version.outputs.prop}}'
+            delete-branch: true
+            title: 'PHP ${{steps.version.outputs.prop}}'
+            body: ''
